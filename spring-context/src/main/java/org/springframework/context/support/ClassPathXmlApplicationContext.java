@@ -130,12 +130,19 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 	 * @throws BeansException if context creation failed
 	 * @see #refresh()
 	 */
+	/**
+	 * 整个方法的流程和FileSystemXmlApplicationContext类似
+	 * 跳转：{@link FileSystemXmlApplicationContext#FileSystemXmlApplicationContext(String[], boolean, ApplicationContext)}
+	 */
 	public ClassPathXmlApplicationContext(String[] configLocations, boolean refresh, ApplicationContext parent)
 			throws BeansException {
 
+		//调用父类的构造器，这里传入的是null
 		super(parent);
+		//设置配置文件的路径
 		setConfigLocations(configLocations);
 		if (refresh) {
+			//刷新环境，即重新初始化容器
 			refresh();
 		}
 	}

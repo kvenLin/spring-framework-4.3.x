@@ -38,7 +38,6 @@ import org.springframework.context.ApplicationContextException;
  * typically delegating to one or more specific bean definition readers.
  *
  * <p><b>Note that there is a similar base class for WebApplicationContexts.</b>
- * {@link org.springframework.web.context.support.AbstractRefreshableWebApplicationContext}
  * provides the same subclassing strategy, but additionally pre-implements
  * all context functionality for web environments. There is also a
  * pre-defined way to receive config locations for a web context.
@@ -55,7 +54,6 @@ import org.springframework.context.ApplicationContextException;
  * @since 1.1.3
  * @see #loadBeanDefinitions
  * @see org.springframework.beans.factory.support.DefaultListableBeanFactory
- * @see org.springframework.web.context.support.AbstractRefreshableWebApplicationContext
  * @see AbstractXmlApplicationContext
  * @see ClassPathXmlApplicationContext
  * @see FileSystemXmlApplicationContext

@@ -7,8 +7,7 @@ package com.clf.service;
  */
 public class LoginImpl implements ILogin{
     @Override
-    public String loginCheck(String userName, String password) {
-        System.out.println(userName + " login...");
-        return "password is " + password;
+    public void loginCheck(String userName, String password) {
+        System.out.println(userName + " login..., password is " + password);
     }
 }

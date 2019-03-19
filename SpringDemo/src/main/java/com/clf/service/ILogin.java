@@ -6,5 +6,5 @@ package com.clf.service;
  * @Description:
  */
 public interface ILogin {
-    String loginCheck(String userName, String password);
+    void loginCheck(String userName, String password);
 }

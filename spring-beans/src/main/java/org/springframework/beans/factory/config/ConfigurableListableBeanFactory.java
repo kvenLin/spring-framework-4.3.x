@@ -36,7 +36,6 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
  *
  * @author Juergen Hoeller
  * @since 03.11.2003
- * @see org.springframework.context.support.AbstractApplicationContext#getBeanFactory()
  */
 public interface ConfigurableListableBeanFactory
 		extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
@@ -57,7 +56,6 @@ public interface ConfigurableListableBeanFactory
 	 * For further types to ignore, invoke this method for each type.
 	 * @param ifc the dependency interface to ignore
 	 * @see org.springframework.beans.factory.BeanFactoryAware
-	 * @see org.springframework.context.ApplicationContextAware
 	 */
 	void ignoreDependencyInterface(Class<?> ifc);
 
