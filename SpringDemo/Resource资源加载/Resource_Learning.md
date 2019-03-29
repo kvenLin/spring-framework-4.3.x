@@ -1,6 +1,6 @@
 # IOC资源加载分析
 ## Resource资源定义接口分析
-[Resource的uml结构图](Resource.uml)
+![Resource的uml结构图](Resource.png)
 * InputStreamResource: 将给定的InputStream作为一种资源的Resource的实现类
 * Resource接口简介:
     * 继承InputStreamSource接口
@@ -23,7 +23,7 @@
     * **class path 类型的资源的实现**
     * 使用给定的ClassLoader或者给定的Class来加载资源
 ## ResourceLoader资源加载接口分析
-[ResourceLoader的uml结构图](ResourceLoader.uml)
+![ResourceLoader的uml结构图](ResourceLoader.png)
 * ResourceLoader接口简介:
     * 最为Spring资源加载的统一抽象,具体资源的加载由相应的实现类来完成
     * getResource():根据所提供的路径location返回Resource实例
