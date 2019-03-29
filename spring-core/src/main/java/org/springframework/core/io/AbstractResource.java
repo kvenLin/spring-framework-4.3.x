@@ -42,9 +42,7 @@ import org.springframework.util.ResourceUtils;
 public abstract class AbstractResource implements Resource {
 
 	/**
-	 * This implementation checks whether a File can be opened,
-	 * falling back to whether an InputStream can be opened.
-	 * This will cover both directories and content resources.
+	 * 判断文件是否存在,如果判断过程产生异常(因为会调用SecurityManager来判断),就关闭对应的流
 	 */
 	@Override
 	public boolean exists() {
@@ -69,7 +67,7 @@ public abstract class AbstractResource implements Resource {
 	 */
 	@Override
 	public boolean isReadable() {
-		return true;
+		return true;//直接返回true,表示可读
 	}
 
 	/**
@@ -77,7 +75,7 @@ public abstract class AbstractResource implements Resource {
 	 */
 	@Override
 	public boolean isOpen() {
-		return false;
+		return false;//直接返回false,表示未被打开
 	}
 
 	/**
@@ -90,8 +88,7 @@ public abstract class AbstractResource implements Resource {
 	}
 
 	/**
-	 * This implementation builds a URI based on the URL returned
-	 * by {@link #getURL()}.
+	 * 基于 {@link #getURL()} 构建URI
 	 */
 	@Override
 	public URI getURI() throws IOException {
@@ -105,8 +102,7 @@ public abstract class AbstractResource implements Resource {
 	}
 
 	/**
-	 * This implementation throws a FileNotFoundException, assuming
-	 * that the resource cannot be resolved to an absolute file path.
+	 * 抛出FIleNotFoundException异常,交给子类实现
 	 */
 	@Override
 	public File getFile() throws IOException {
@@ -114,9 +110,8 @@ public abstract class AbstractResource implements Resource {
 	}
 
 	/**
-	 * This implementation reads the entire InputStream to calculate the
-	 * content length. Subclasses will almost always be able to provide
-	 * a more optimal version of this, e.g. checking a File length.
+	 * 获取资源长度
+	 * 这个资源长度,实际上就是资源的字节长度,通过全部读取一遍来判断.
 	 * @see #getInputStream()
 	 */
 	@Override
@@ -142,8 +137,7 @@ public abstract class AbstractResource implements Resource {
 	}
 
 	/**
-	 * This implementation checks the timestamp of the underlying File,
-	 * if available.
+	 * 返回上次资源最后修改的时间
 	 * @see #getFileForLastModifiedCheck()
 	 */
 	@Override
@@ -179,8 +173,7 @@ public abstract class AbstractResource implements Resource {
 	}
 
 	/**
-	 * This implementation always returns {@code null},
-	 * assuming that this resource type does not have a filename.
+	 * 获取资源名
 	 */
 	@Override
 	public String getFilename() {

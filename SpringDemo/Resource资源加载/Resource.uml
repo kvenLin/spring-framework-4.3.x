@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.core.io.Resource</OriginalElement>
+  <nodes>
+    <node x="212.0" y="240.0">org.springframework.core.io.AbstractFileResolvingResource</node>
+    <node x="612.2424242424242" y="160.0">org.springframework.core.io.ContextResource</node>
+    <node x="194.0" y="320.0">org.springframework.core.io.UrlResource</node>
+    <node x="716.0" y="240.0">org.springframework.core.io.InputStreamResource</node>
+    <node x="386.0" y="0.0">org.springframework.core.io.InputStreamSource</node>
+    <node x="350.0" y="320.0">org.springframework.core.io.ClassPathResource</node>
+    <node x="0.0" y="240.0">org.springframework.core.io.FileSystemResource</node>
+    <node x="512.0" y="240.0">org.springframework.core.io.ByteArrayResource</node>
+    <node x="422.0" y="80.0">org.springframework.core.io.Resource</node>
+    <node x="416.24242424242425" y="160.0">org.springframework.core.io.AbstractResource</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.core.io.Resource" target="org.springframework.core.io.InputStreamSource">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.ContextResource" target="org.springframework.core.io.Resource">
+      <point x="0.0" y="-15.0" />
+      <point x="696.2424242424242" y="135.0" />
+      <point x="515.3333333333334" y="135.0" />
+      <point x="37.33333333333337" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.AbstractFileResolvingResource" target="org.springframework.core.io.AbstractResource">
+      <point x="0.0" y="-15.0" />
+      <point x="352.0" y="220.0" />
+      <point x="482.24242424242425" y="220.0" />
+      <point x="-22.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.FileSystemResource" target="org.springframework.core.io.Resource">
+      <point x="-48.0" y="-15.0" />
+      <point x="48.0" y="135.0" />
+      <point x="440.6666666666667" y="135.0" />
+      <point x="-37.333333333333314" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.AbstractResource" target="org.springframework.core.io.Resource">
+      <point x="0.0" y="-15.0" />
+      <point x="504.24242424242425" y="135.0" />
+      <point x="478.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.FileSystemResource" target="org.springframework.core.io.AbstractResource">
+      <point x="48.0" y="-15.0" />
+      <point x="144.0" y="210.0" />
+      <point x="438.24242424242425" y="210.0" />
+      <point x="-66.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.UrlResource" target="org.springframework.core.io.AbstractFileResolvingResource">
+      <point x="0.0" y="-15.0" />
+      <point x="262.0" y="295.0" />
+      <point x="282.0" y="295.0" />
+      <point x="-70.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.ClassPathResource" target="org.springframework.core.io.AbstractFileResolvingResource">
+      <point x="0.0" y="-15.0" />
+      <point x="442.0" y="295.0" />
+      <point x="422.0" y="295.0" />
+      <point x="70.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.InputStreamResource" target="org.springframework.core.io.AbstractResource">
+      <point x="0.0" y="-15.0" />
+      <point x="816.0" y="210.0" />
+      <point x="570.2424242424242" y="210.0" />
+      <point x="66.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.ByteArrayResource" target="org.springframework.core.io.AbstractResource">
+      <point x="0.0" y="-15.0" />
+      <point x="604.0" y="220.0" />
+      <point x="526.2424242424242" y="220.0" />
+      <point x="22.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="265.0" y="16.0" />
+  <SelectedNodes>
+    <node>org.springframework.core.io.AbstractResource</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

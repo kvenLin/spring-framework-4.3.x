@@ -20,7 +20,6 @@ import org.springframework.util.ResourceUtils;
 
 /**
  * Strategy interface for loading resources (e.. class path or file system
- * resources). An {@link org.springframework.context.ApplicationContext}
  * is required to provide this functionality, plus extended
  * {@link org.springframework.core.io.support.ResourcePatternResolver} support.
  *
@@ -35,8 +34,6 @@ import org.springframework.util.ResourceUtils;
  * @since 10.03.2004
  * @see Resource
  * @see org.springframework.core.io.support.ResourcePatternResolver
- * @see org.springframework.context.ApplicationContext
- * @see org.springframework.context.ResourceLoaderAware
  */
 public interface ResourceLoader {
 

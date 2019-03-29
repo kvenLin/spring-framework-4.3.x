@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.core.io.ResourceLoader</OriginalElement>
+  <nodes>
+    <node x="852.0" y="160.0">org.springframework.core.io.support.PathMatchingResourcePatternResolver</node>
+    <node x="0.0" y="240.0">org.springframework.core.io.ClassRelativeResourceLoader</node>
+    <node x="368.0" y="320.0">org.springframework.context.support.FileSystemXmlApplicationContext</node>
+    <node x="601.0" y="0.0">org.springframework.core.io.ResourceLoader</node>
+    <node x="544.0" y="240.0">org.springframework.context.support.AbstractApplicationContext</node>
+    <node x="283.7272727272727" y="160.0">org.springframework.core.io.DefaultResourceLoader</node>
+    <node x="684.0" y="320.0">org.springframework.context.support.ClassPathXmlApplicationContext</node>
+    <node x="787.2727272727273" y="80.0">org.springframework.core.io.support.ResourcePatternResolver</node>
+    <node x="284.0" y="240.0">org.springframework.core.io.FileSystemResourceLoader</node>
+    <node x="640.0" y="160.0">org.springframework.context.ApplicationContext</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.core.io.support.ResourcePatternResolver" target="org.springframework.core.io.ResourceLoader">
+      <point x="0.0" y="-15.0" />
+      <point x="903.2727272727273" y="55.0" />
+      <point x="721.0" y="55.0" />
+      <point x="40.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.support.ClassPathXmlApplicationContext" target="org.springframework.context.support.AbstractApplicationContext">
+      <point x="0.0" y="-15.0" />
+      <point x="828.0" y="295.0" />
+      <point x="736.0" y="295.0" />
+      <point x="64.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.support.FileSystemXmlApplicationContext" target="org.springframework.context.support.AbstractApplicationContext">
+      <point x="0.0" y="-15.0" />
+      <point x="516.0" y="295.0" />
+      <point x="608.0" y="295.0" />
+      <point x="-64.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.support.PathMatchingResourcePatternResolver" target="org.springframework.core.io.support.ResourcePatternResolver">
+      <point x="0.0" y="-15.0" />
+      <point x="1016.0" y="135.0" />
+      <point x="961.2727272727273" y="135.0" />
+      <point x="58.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.support.AbstractApplicationContext" target="org.springframework.core.io.DefaultResourceLoader">
+      <point x="-64.0" y="-15.0" />
+      <point x="608.0" y="215.0" />
+      <point x="463.7272727272727" y="215.0" />
+      <point x="72.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.ClassRelativeResourceLoader" target="org.springframework.core.io.DefaultResourceLoader">
+      <point x="0.0" y="-15.0" />
+      <point x="132.0" y="215.0" />
+      <point x="319.7272727272727" y="215.0" />
+      <point x="-72.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.support.AbstractApplicationContext" target="org.springframework.context.ApplicationContext">
+      <point x="64.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.FileSystemResourceLoader" target="org.springframework.core.io.DefaultResourceLoader">
+      <point x="0.0" y="-15.0" />
+      <point x="404.0" y="215.0" />
+      <point x="391.7272727272727" y="215.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.ApplicationContext" target="org.springframework.core.io.support.ResourcePatternResolver">
+      <point x="0.0" y="-15.0" />
+      <point x="736.0" y="135.0" />
+      <point x="845.2727272727273" y="135.0" />
+      <point x="-58.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.core.io.DefaultResourceLoader" target="org.springframework.core.io.ResourceLoader">
+      <point x="0.0" y="-15.0" />
+      <point x="391.7272727272727" y="55.0" />
+      <point x="641.0" y="55.0" />
+      <point x="-40.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="693.0" y="206.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

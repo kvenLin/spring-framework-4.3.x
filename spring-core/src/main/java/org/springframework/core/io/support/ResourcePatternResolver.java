@@ -27,8 +27,6 @@ import org.springframework.core.io.ResourceLoader;
  *
  * <p>This is an extension to the {@link org.springframework.core.io.ResourceLoader}
  * interface. A passed-in ResourceLoader (for example, an
- * {@link org.springframework.context.ApplicationContext} passed in via
- * {@link org.springframework.context.ResourceLoaderAware} when running in a context)
  * can be checked whether it implements this extended interface too.
  *
  * <p>{@link PathMatchingResourcePatternResolver} is a standalone implementation
@@ -48,8 +46,6 @@ import org.springframework.core.io.ResourceLoader;
  * @since 1.0.2
  * @see org.springframework.core.io.Resource
  * @see org.springframework.core.io.ResourceLoader
- * @see org.springframework.context.ApplicationContext
- * @see org.springframework.context.ResourceLoaderAware
  */
 public interface ResourcePatternResolver extends ResourceLoader {
 
@@ -63,13 +59,8 @@ public interface ResourcePatternResolver extends ResourceLoader {
 	String CLASSPATH_ALL_URL_PREFIX = "classpath*:";
 
 	/**
-	 * Resolve the given location pattern into Resource objects.
-	 * <p>Overlapping resource entries that point to the same physical
-	 * resource should be avoided, as far as possible. The result should
-	 * have set semantics.
-	 * @param locationPattern the location pattern to resolve
-	 * @return the corresponding Resource objects
-	 * @throws IOException in case of I/O errors
+	 * ResourcePatternResolver 是 ResourceLoader 的扩展，
+	 * 它支持根据指定的资源路径匹配模式每次返回多个 Resource 实例
 	 */
 	Resource[] getResources(String locationPattern) throws IOException;
 

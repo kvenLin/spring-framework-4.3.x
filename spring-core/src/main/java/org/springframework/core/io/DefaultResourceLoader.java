@@ -29,7 +29,6 @@ import org.springframework.util.StringUtils;
 /**
  * Default implementation of the {@link ResourceLoader} interface.
  * Used by {@link ResourceEditor}, and serves as base class for
- * {@link org.springframework.context.support.AbstractApplicationContext}.
  * Can also be used standalone.
  *
  * <p>Will return a {@link UrlResource} if the location value is a URL,
@@ -39,7 +38,6 @@ import org.springframework.util.StringUtils;
  * @author Juergen Hoeller
  * @since 10.03.2004
  * @see FileSystemResourceLoader
- * @see org.springframework.context.support.ClassPathXmlApplicationContext
  */
 public class DefaultResourceLoader implements ResourceLoader {
 
@@ -55,6 +53,7 @@ public class DefaultResourceLoader implements ResourceLoader {
 	 * @see java.lang.Thread#getContextClassLoader()
 	 */
 	public DefaultResourceLoader() {
+		//默认使用的Thread.currentThread().getContextClassLoader()
 		this.classLoader = ClassUtils.getDefaultClassLoader();
 	}
 
@@ -117,26 +116,30 @@ public class DefaultResourceLoader implements ResourceLoader {
 		Assert.notNull(location, "Location must not be null");
 
 		for (ProtocolResolver protocolResolver : this.protocolResolvers) {
+			//使用protocolResolvers来对资源进行加载
 			Resource resource = protocolResolver.resolve(location, this);
+			//成功就返回Resource,即当resource不为空时进行返回
 			if (resource != null) {
 				return resource;
 			}
 		}
 
 		if (location.startsWith("/")) {
+			//如果是以"/"开头,则调用getResourceByPath()构造ClassPathContextResource返回
 			return getResourceByPath(location);
 		}
+		//如果是以"classpath:"开头,就构造ClassPathResource进行返回
 		else if (location.startsWith(CLASSPATH_URL_PREFIX)) {
 			return new ClassPathResource(location.substring(CLASSPATH_URL_PREFIX.length()), getClassLoader());
 		}
 		else {
 			try {
-				// Try to parse the location as a URL...
+				//构造URL,尝试通过URL进行资源定位
 				URL url = new URL(location);
 				return new UrlResource(url);
 			}
 			catch (MalformedURLException ex) {
-				// No URL -> resolve as resource path.
+				//如果加载过程异常,则委派getResourceByPath实现资源定位
 				return getResourceByPath(location);
 			}
 		}
@@ -150,8 +153,6 @@ public class DefaultResourceLoader implements ResourceLoader {
 	 * @param path the path to the resource
 	 * @return the corresponding Resource handle
 	 * @see ClassPathResource
-	 * @see org.springframework.context.support.FileSystemXmlApplicationContext#getResourceByPath
-	 * @see org.springframework.web.context.support.XmlWebApplicationContext#getResourceByPath
 	 */
 	protected Resource getResourceByPath(String path) {
 		return new ClassPathContextResource(path, getClassLoader());

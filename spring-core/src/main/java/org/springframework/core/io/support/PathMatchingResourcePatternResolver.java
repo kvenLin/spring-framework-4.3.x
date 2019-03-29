@@ -273,14 +273,15 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 	@Override
 	public Resource[] getResources(String locationPattern) throws IOException {
 		Assert.notNull(locationPattern, "Location pattern must not be null");
+		//以"classpath*:"开头
 		if (locationPattern.startsWith(CLASSPATH_ALL_URL_PREFIX)) {
-			// a class path resource (multiple resources for same name possible)
+			//路径包含通配符
 			if (getPathMatcher().isPattern(locationPattern.substring(CLASSPATH_ALL_URL_PREFIX.length()))) {
 				// a class path resource pattern
 				return findPathMatchingResources(locationPattern);
 			}
 			else {
-				// all class path resources with the given name
+				//路径不含通配符
 				return findAllClassPathResources(locationPattern.substring(CLASSPATH_ALL_URL_PREFIX.length()));
 			}
 		}
@@ -289,6 +290,7 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 			// and on Tomcat only after the "*/" separator for its "war:" protocol.
 			int prefixEnd = (locationPattern.startsWith("war:") ? locationPattern.indexOf("*/") + 1 :
 					locationPattern.indexOf(':') + 1);
+			//路径包含通配符
 			if (getPathMatcher().isPattern(locationPattern.substring(prefixEnd))) {
 				// a file pattern
 				return findPathMatchingResources(locationPattern);
@@ -309,11 +311,13 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 	 * @see java.lang.ClassLoader#getResources
 	 * @see #convertClassLoaderURL
 	 */
+	//以classpath*:开头,但是不含有通配符时,调用该方法,返回路径下和所有jar包中的所有匹配的资源
 	protected Resource[] findAllClassPathResources(String location) throws IOException {
 		String path = location;
 		if (path.startsWith("/")) {
 			path = path.substring(1);
 		}
+		//真正执行的是doFindAllClassPathResources
 		Set<Resource> result = doFindAllClassPathResources(path);
 		if (logger.isDebugEnabled()) {
 			logger.debug("Resolved classpath location [" + location + "] to resources " + result);
@@ -330,15 +334,19 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 	 */
 	protected Set<Resource> doFindAllClassPathResources(String path) throws IOException {
 		Set<Resource> result = new LinkedHashSet<Resource>(16);
+		//根据ClassLoader加载路径下的所有资源.
 		ClassLoader cl = getClassLoader();
-		Enumeration<URL> resourceUrls = (cl != null ? cl.getResources(path) : ClassLoader.getSystemResources(path));
+		//在加载过程中如果，在构造 PathMatchingResourcePatternResolver 实例的时候
+		Enumeration<URL> resourceUrls = (
+				cl != null ? //如果传入了 ClassLoader
+				cl.getResources(path) : //则调用其 getResources():ClassLoader内部使用的双亲委派
+				ClassLoader.getSystemResources(path));//否则调用ClassLoader.getSystemResources(path)
 		while (resourceUrls.hasMoreElements()) {
 			URL url = resourceUrls.nextElement();
 			result.add(convertClassLoaderURL(url));
 		}
 		if ("".equals(path)) {
-			// The above result is likely to be incomplete, i.e. only containing file system references.
-			// We need to have pointers to each of the jar files on the classpath as well...
+			//加载路径下得所有 jar 包
 			addAllClassLoaderJarRoots(cl, result);
 		}
 		return result;
@@ -483,9 +491,16 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 	 * @see #doFindPathMatchingFileResources
 	 * @see org.springframework.util.PathMatcher
 	 */
+	/**
+	 * 主要分两步:
+	 * 1.确定目录,获取该目录下的所有资源
+	 * 2.在获得所有资源中进行迭代匹配获取我们想要的资源
+	 */
 	protected Resource[] findPathMatchingResources(String locationPattern) throws IOException {
+		//确定根路径
 		String rootDirPath = determineRootDir(locationPattern);
 		String subPattern = locationPattern.substring(rootDirPath.length());
+		//获取根路径下的资源
 		Resource[] rootDirResources = getResources(rootDirPath);
 		Set<Resource> result = new LinkedHashSet<Resource>(16);
 		for (Resource rootDirResource : rootDirResources) {
@@ -497,9 +512,11 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 					rootDirResource = new UrlResource(rootDirUrl);
 				}
 			}
+			//vsf资源
 			if (rootDirUrl.getProtocol().startsWith(ResourceUtils.URL_PROTOCOL_VFS)) {
 				result.addAll(VfsResourceMatchingDelegate.findMatchingResources(rootDirUrl, subPattern, getPathMatcher()));
 			}
+			//jar资源
 			else if (ResourceUtils.isJarURL(rootDirUrl) || isJarResource(rootDirResource)) {
 				result.addAll(doFindPathMatchingJarResources(rootDirResource, rootDirUrl, subPattern));
 			}
