@@ -74,7 +74,7 @@
     * 该接口能够通过getResources(),由一个locationPattern进行模糊匹配获取多个Resource
     * PathMatching实现ResourcePatternResolver的getResources()流程图:
 
-![PathMatchingResourcePatternResolver流程图](../image/PathMatchingResourcePatternResolver_getResources.png)
+![PathMatchingResourcePatternResolver流程图](PathMatchingResourcePatternResolver_getResources.png)
 
 ## 总结
 * Spring提供了Resource和ResourceLoader来统一抽象整个资源及其定位.
