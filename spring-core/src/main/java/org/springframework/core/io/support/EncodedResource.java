@@ -51,9 +51,7 @@ public class EncodedResource implements InputStreamSource {
 
 
 	/**
-	 * Create a new {@code EncodedResource} for the given {@code Resource},
-	 * not specifying an explicit encoding or {@code Charset}.
-	 * @param resource the {@code Resource} to hold (never {@code null})
+	 * 将Resource封装成EncodedResource,主要是为了对Resource进行编码,保证内容读取的正确性.
 	 */
 	public EncodedResource(Resource resource) {
 		this(resource, null, null);

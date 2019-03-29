@@ -65,7 +65,6 @@ public abstract class AbstractBeanDefinitionReader implements EnvironmentCapable
 	 * <p>If the passed-in bean factory does not only implement the BeanDefinitionRegistry
 	 * interface but also the ResourceLoader interface, it will be used as default
 	 * ResourceLoader as well. This will usually be the case for
-	 * {@link org.springframework.context.ApplicationContext} implementations.
 	 * <p>If given a plain BeanDefinitionRegistry, the default ResourceLoader will be a
 	 * {@link org.springframework.core.io.support.PathMatchingResourcePatternResolver}.
 	 * <p>If the passed-in bean factory also implements {@link EnvironmentCapable} its
