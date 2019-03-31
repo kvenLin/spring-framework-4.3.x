@@ -92,25 +92,29 @@ public class XmlValidationModeDetector {
 		try {
 			boolean isDtdValidated = false;
 			String content;
+			//一行一行读取xml文件的内容
 			while ((content = reader.readLine()) != null) {
 				content = consumeCommentTokens(content);
 				if (this.inComment || !StringUtils.hasText(content)) {
 					continue;
 				}
+				//如果包含 DOCTYPE 即为 DTD 模式
 				if (hasDoctype(content)) {
+					//true 标记是DTD模式
 					isDtdValidated = true;
 					break;
 				}
+				//读取<开始符号,验证模式一定会在<符号之前
 				if (hasOpeningTag(content)) {
 					// End of meaningful data...
 					break;
 				}
 			}
+			//为true返回DTD,否则返回XSD
 			return (isDtdValidated ? VALIDATION_DTD : VALIDATION_XSD);
 		}
 		catch (CharConversionException ex) {
-			// Choked on some character encoding...
-			// Leave the decision up to the caller.
+			//出现异常,为XSD
 			return VALIDATION_AUTO;
 		}
 		finally {
