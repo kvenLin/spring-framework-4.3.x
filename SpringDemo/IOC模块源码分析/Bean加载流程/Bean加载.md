@@ -23,8 +23,8 @@
     * loadBeanDefinitions方法内部是调用了重载方法loadBeanDefinitions(EncodedResource resource)
     * 内部核心方法doLoadBeanDefinitions():
         1. 调用getValidationModeForResource()**[获取xml文件的验证模式](../获取验证模式/获取验证模式.md)**
-        2. 调用loadDocument根据xml文件 **[获取对应的Document实例](../注册BeanDefinition/注册BeanDefinition.md)**
-        3. 调用registerBeanDefinitions()**注册Bean实例**
+        2. 调用loadDocument根据xml文件 **[获取对应的Document实例](../获取Document对象/获取Document实例.md)**
+        3. 调用registerBeanDefinitions()**[注册Bean实例](../注册BeanDefinition/注册BeanDefinition.md)**
 ## 总结
 * 首先通过文件配置文件的路径对资源进行定位加载,具体参考[Resource资源加载分析](../Resource资源加载/Resource_Learning.md)
 * BeanDefinitionReader的主要作用是用于**从上一流程中的Resource资源中读取的Bean信息,并将其解析为BeanDefinition对象,注册到BeanDefinitionRegistry**
