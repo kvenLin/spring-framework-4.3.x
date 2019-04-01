@@ -252,12 +252,14 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 */
 	protected EntityResolver getEntityResolver() {
 		if (this.entityResolver == null) {
-			// Determine default EntityResolver to use.
+			//获取父类AbstractBeanDefinitionReader的ResourceLoader
 			ResourceLoader resourceLoader = getResourceLoader();
 			if (resourceLoader != null) {
+				//如果ResourceLoader不为null,则根据指定的ResourceLoader创建一个ResourceEntityResolver
 				this.entityResolver = new ResourceEntityResolver(resourceLoader);
 			}
 			else {
+				//如果ResourceLoader为null,则创建一个 DelegatingEntityResolver
 				this.entityResolver = new DelegatingEntityResolver(getBeanClassLoader());
 			}
 		}
@@ -517,9 +519,13 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 * @see BeanDefinitionDocumentReader#registerBeanDefinitions
 	 */
 	public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
+		//1.实例出一个BeanDefinitionDocumentReader对象,实际是继承BeanDefinitionDocumentReader接口的DefaultBeanDefinitionDocumentReader
 		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
+		//2.统计BeanDefinition的个数
 		int countBefore = getRegistry().getBeanDefinitionCount();
+		//3.注册BeanDefinition
 		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+		//4.返回新注册的BeanDefinition个数
 		return getRegistry().getBeanDefinitionCount() - countBefore;
 	}
 
