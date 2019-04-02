@@ -60,6 +60,7 @@ public class BeanDefinitionReaderUtils {
 		bd.setParentName(parentName);
 		if (className != null) {
 			if (classLoader != null) {
+				//传入类名和类加载器,获取对应的class对象
 				bd.setBeanClass(ClassUtils.forName(className, classLoader));
 			}
 			else {
@@ -146,6 +147,7 @@ public class BeanDefinitionReaderUtils {
 
 		// Register bean definition under primary name.
 		String beanName = definitionHolder.getBeanName();
+		//向注册表中进行注册对应beanName的BeanDefinition实例
 		registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
 
 		// Register aliases for bean name, if any.
