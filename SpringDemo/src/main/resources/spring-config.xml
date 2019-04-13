@@ -4,4 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="loginService" class="com.clf.service.LoginImpl"/>
+    <bean id="Bmw" class="com.clf.lookup_method.Bmw"/>
+    <bean id="Kia" class="com.clf.lookup_method.Kia"/>
+    <bean id="display" class="com.clf.lookup_method.Display">
+        <lookup-method name="getCar" bean="Kia"/>
+    </bean>
+    <bean id="methodReplace" class="com.clf.replaced_method.MethodReplace"/>
+    <bean id="method" class="com.clf.replaced_method.Method">
+        <replaced-method name="display" replacer="methodReplace"/>
+    </bean>
 </beans>

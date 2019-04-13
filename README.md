@@ -7,4 +7,6 @@
     * [获取Document实例](/SpringDemo/IOC模块源码分析/获取Document对象/获取Document实例.md)
     * [注册BeanDefinition](/SpringDemo/IOC模块源码分析/注册BeanDefinition/注册BeanDefinition.md)
         * [Bean的解析](/SpringDemo/IOC模块源码分析/Bean的解析/Bean的解析.md)
+* [IOC初始化总结](/SpringDemo/IOC模块源码分析/IOC初始化总结/IOC初始化总结.md)
+* [Bean初始化-getBean()](/SpringDemo/IOC模块源码分析/Bean初始化/getBean()流程.md)
 * 更新中...

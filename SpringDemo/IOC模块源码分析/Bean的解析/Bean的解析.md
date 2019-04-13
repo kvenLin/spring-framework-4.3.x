@@ -28,3 +28,9 @@
     |---|---|---|解析property子元素: parsePropertyElements(ele, bd)
     |---|---|---|解析qualifier子元素: parseQualifierElements(ele, bd)
     |---|---|---|返回AbstractBeanDefinition
+### bean标签解析
+* meta: 元数据,当需要使用里面的信息时可以通过key获取
+* lookup-method: 将一个方法声明为返回某种类型的bean,但实际返回的bean是在配置文件中进行配置的.该方法可用于设计一些可拔插的功能,解除程序依赖
+    * [使用示例](../../src/main/java/com/clf/lookup_method)
+* replaced-method: 可以在运行时调用新的方法替换现有的方法,还能动态的更新原由的方法的逻辑
+    * [使用示例](../../src/main/java/com/clf/replaced_method)

@@ -706,16 +706,26 @@ public class BeanDefinitionParserDelegate {
 				parentName, className, this.readerContext.getBeanClassLoader());
 	}
 
+    /**
+     * 解析子元素meta声明的key和value
+     * 注: 该方法中的参数 BeanMetadataAttributeAccessor 是 AbstractBeanDefinition 的父类
+     * @param ele
+     * @param attributeAccessor
+     */
 	public void parseMetaElements(Element ele, BeanMetadataAttributeAccessor attributeAccessor) {
 		NodeList nl = ele.getChildNodes();
 		for (int i = 0; i < nl.getLength(); i++) {
 			Node node = nl.item(i);
 			if (isCandidateElement(node) && nodeNameEquals(node, META_ELEMENT)) {
 				Element metaElement = (Element) node;
+				//获取相应的key
 				String key = metaElement.getAttribute(KEY_ATTRIBUTE);
+				//获取相应的value
 				String value = metaElement.getAttribute(VALUE_ATTRIBUTE);
+				//构造一个attribute对象
 				BeanMetadataAttribute attribute = new BeanMetadataAttribute(key, value);
 				attribute.setSource(extractSource(metaElement));
+				//将构造的BeanAttribute对象添加到对应的 AbstractBeanDefinition 中
 				attributeAccessor.addMetadataAttribute(attribute);
 			}
 		}

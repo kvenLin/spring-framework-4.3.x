@@ -51,6 +51,7 @@ public class BeanMetadataAttributeAccessor extends AttributeAccessorSupport impl
 	 * @param attribute the BeanMetadataAttribute object to register
 	 */
 	public void addMetadataAttribute(BeanMetadataAttribute attribute) {
+		//委托给AttributeAccessSupport实现
 		super.setAttribute(attribute.getName(), attribute);
 	}
 

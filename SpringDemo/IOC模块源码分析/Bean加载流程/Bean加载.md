@@ -6,7 +6,7 @@
 * 装载资源整个过程分为三个步骤:
     * 资源定位,可以参考上一节的[Resource资源加载分析](../Resource资源加载/Resource_Learning.md)
     * 装载:
-        * 就是BeanDefinition的载入.BeanDefinitionReader读取、解析Resource资源
+        * 就是BeanDefinition的载入.**BeanDefinitionReader读取、解析Resource资源**
         * 将用户定义的Bean表示成IOC容器的内部数据结构(BeanDefinition)
         * IOC容器内维护了一个BeanDefinition Map的数据结构,配置文件中的每一个Bean都对应一个BeanDefinition对象
     * 注册:
