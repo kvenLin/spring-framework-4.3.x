@@ -177,12 +177,12 @@
     }
 ```
 ### 核心流程
-1.转换beanName. 因为我们传入的 name 不一定是 beanName,可以是 aliasName,FactoryBean,需要转换.
-2.尝试从缓存中获取单例bean.
-3.bean的实例化.
-4.原型模式的依赖检查.
-5.尝试从parentBeanFactory中获取bean实例.
-6.后去RootBeanDefinition,并对其进行合并检查.
-7.依赖检查.
-8.对不同的scope进行处理.
-9.类型转换.
+1. 转换beanName. 因为我们传入的 name 不一定是 beanName,可以是 aliasName,FactoryBean,需要转换.
+2. 尝试从缓存中获取单例bean.
+3. bean的实例化.
+4. 原型模式的依赖检查.
+5. 尝试从parentBeanFactory中获取bean实例.
+6. 后去RootBeanDefinition,并对其进行合并检查.
+7. 依赖检查.
+8. 对不同的scope进行处理.
+9. 类型转换.
